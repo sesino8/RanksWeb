@@ -28,6 +28,11 @@ body {
       margin-left: 20px;
       text-decoration: none;
       color: #0F52BA;
+      img{
+        width: 50%;
+        text-align: center;
+        margin-left: 20%;
+      }
     }
 
     .main-nav {
@@ -180,6 +185,9 @@ body {
 
       .web{
         margin: 5%;
+        .categorias{
+          margin: 5% 5% 5% 0px;
+        }
         img{
           width: 100%;
         }

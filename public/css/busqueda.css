@@ -26,6 +26,11 @@ body .navbar .logo {
   text-decoration: none;
   color: #0F52BA;
 }
+body .navbar .logo img {
+  width: 50%;
+  text-align: center;
+  margin-left: 20%;
+}
 body .navbar .main-nav {
   list-style-type: none;
   display: none;
@@ -157,6 +162,9 @@ body #container #main {
 }
 body #container #main .web {
   margin: 5%;
+}
+body #container #main .web .categorias {
+  margin: 5% 5% 5% 0px;
 }
 body #container #main .web img {
   width: 100%;
