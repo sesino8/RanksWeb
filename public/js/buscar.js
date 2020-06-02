@@ -36,14 +36,20 @@ window.onload = function () {
 		for (let j = 0; j < detalles[i].length; j++) {
 			//Cogemos los enlaces para sacarles cada URL de cada web para después a la hora de filtrar 
 			//que podamos clasificarlas sin problema
+			var element = detalles[i][j].innerText;
+
 			if (detalles[i][j].tagName == 'A') {
 				elementDresciption.push(detalles[i][j].href);
 				console.log(detalles[i][j].href);
 
-			} else {
-				elementDresciption.push(detalles[i][j].innerText);
-				console.log(detalles[i][j].innerText);
+			} else if (element.includes("Categoría")) {
+				//Si no es un enlace, sacamos lo que tenga dentro del elemento para después pasarlo al array 
+				var word = element.substring(11, element.length);
+				elementDresciption.push(word);
 
+			} else {
+				elementDresciption.push(element);
+				console.log(element);
 			}
 
 		}
@@ -64,8 +70,48 @@ function init() {
 }
 
 //Funcion que rellena el array de categorias
-function categoria() {
-	console.log("fsajsa");
+function categoria(category) {
+	console.log(category);
+
+	var sringHtml;
+
+	var finalHtml = "";
+
+	for (let i = 0; i < descriptionWebs.length; i++) {
+		//Ponemos la posición uno porque es dónde esta la categoria 
+		console.log(descriptionWebs[i][1]);
+		if (descriptionWebs[i][1] == category) {
+
+			for (let j = 0; j < 4; j++) {
+				if (j == 0) {
+					var tittle = descriptionWebs[i][j];
+				} else if (j == 2) {
+					var link = descriptionWebs[i][j];
+				} else if (j == 3) {
+					var paragraf = descriptionWebs[i][j];
+				}
+
+			}
+
+			//Falta anadir el espacio entre categoria: 
+			sringHtml = '<div class="web"> <h2>' + tittle + '</h2>' +
+			'<div class="categorias">Categoría:<a href="#" onclick="categoria("' + category + '")">' + '' + category + '</a></div>' +
+			'<a href="' + link + '" target="_blank"><img src="./media/' + tittle + '.png" alt=""></a>' +
+			'<p>' + paragraf + '</p>' + '</div>';
+
+			finalHtml += sringHtml;
+
+		}
+
+	}
+
+	document.getElementById("main").innerHTML = "";
+
+	document.getElementById("main").innerHTML = finalHtml;
+
+	finalHtml = "";
+
+
 
 }
 
