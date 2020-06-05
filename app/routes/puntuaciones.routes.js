@@ -2,7 +2,7 @@ module.exports = (app) => {
     const puntuaciones = require('../controllers/puntuacion.controller.js');
 
     // Create a new puntuaciones
-    app.post('/puntuaciones/:idfalla/:puntuacion/:ip', puntuaciones.create);
+    app.post('/puntuaciones/:idweb/:puntuacion/:usuario', puntuaciones.create);
 
     // Retrieve all puntuaciones
     app.get('/puntuaciones', puntuaciones.findAll);

@@ -28,7 +28,7 @@
         <span class="navbar-toggle" id="nav-bar-menu">
             <i class="fa fa-bars"></i>
         </span>
-        <a href="#" class="logo">logo</a>
+        <a href="../index.html" class="logo" id="logo"><img src="../media/Logo.png" alt=""></a>
         <ul class="main-nav" id="js-menu">
             <li>
                 <a href="../index.html" class="nav-links">Inicio</a>
@@ -59,17 +59,17 @@
 
                 </div>
 
-                <form action="" id="login" class="input-group">
-                    <input type="text" class="input-field" placeholder="User Id" required>
-                    <input type="text" class="input-field" placeholder="Enter Password" required>
+                <form id="login" class="input-group">
+                    <input type="text" class="input-field" placeholder="Nombre de usuario o e-mail" name="client-name" required>
+                    <input type="text" class="input-field" placeholder="Contraseña"required>
                     <input type="checkbox" class="check-box"><span>Remember Password</span>
-                    <button type="submit" class="submit-btn">Log In</button>
+                    <a onclick="loginSubmit()" class="submit-btn">Log In</a>
     
                 </form>
     
-                <form action="" id="register" class="input-group">
-                    <input type="text" class="input-field" placeholder="User Id" required>
-                    <input type="text" class="input-field" placeholder="Email Id" required>
+                <form action="/user/signup" method="POST" id="register" class="input-group">
+                    <input type="text" class="input-field" placeholder="Nombre de usuario o e-mail" required>
+                    <input type="text" class="input-field" placeholder="Contraseña" required>
                     <input type="checkbox" class="check-box"><span>I agree to the terms & conditions</span>
                     <button type="submit" class="submit-btn">Register</button>
     

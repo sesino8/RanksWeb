@@ -1,12 +1,12 @@
 const mongoose= require('mongoose');
 
-const PuntuacionSchema = mongoose.Schema({
-    idFalla:String,
-    ip:String,
+const esquema = mongoose.Schema({
+    idweb:String,
+    usuario:String,
     puntuacion:Number
 },{
     timestamps:true
 });
 
 
-module.exports = mongoose.model('Puntuacion',PuntuacionSchema);
+module.exports = mongoose.model('Puntuacion',esquema);

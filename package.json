@@ -14,15 +14,20 @@
   "author": "DAW Para MiniServidores",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
     "css-star-rating": "^1.2.4",
     "express": "^4.17.1",
+    "express-validator": "^6.5.0",
     "ipware": "^2.0.0",
+    "jsonwebtoken": "^8.5.1",
     "leaflet": "^1.6.0",
+    "minimist": "^1.2.5",
     "mongodb": "^3.4.0",
-    "mongoose": "^5.8.0"
+    "mongoose": "^5.9.17"
   },
   "devDependencies": {
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.14.1",
     "nodemon": "^2.0.2",
     "proj4": "^2.6.0",
     "sass": "^1.24.0"

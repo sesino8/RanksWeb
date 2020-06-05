@@ -51,10 +51,11 @@ exports.create = (req,res)=>{
         });
     }
 
+
     const puntuacion = new Puntuacion({
-        idFalla: req.params.idfalla || "idFallaVacio",
-        ip: req.params.ip || "127.0.0.1",
-        puntuacion: req.params.puntuacion|| 42
+        idweb: req.params.idweb || "idWeb vacio",
+        usuario: req.params.usuario || "user",
+        puntuacion: req.params.puntuacion || 42
     })
 
     puntuacion.save().then(data =>{

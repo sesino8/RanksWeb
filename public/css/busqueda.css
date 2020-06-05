@@ -50,7 +50,7 @@ body .navbar .active {
 body #container .hero {
   height: 100%;
   width: 100%;
-  background-color: WHITE;
+  background-color: white;
   position: absolute;
 }
 body #container .hero .form-box {
@@ -154,7 +154,7 @@ body #container #sidebar a {
   color: #818181;
 }
 body #container #sidebar a:hover {
-  color: #f1f1f1;
+  color: white;
 }
 body #container #main {
   width: 90%;
@@ -162,6 +162,23 @@ body #container #main {
 }
 body #container #main .web {
   margin: 5%;
+}
+body #container #main .web .valoracion {
+  text-align: center;
+  padding: 3%;
+}
+body #container #main .web .valoracion .estrellas {
+  border: none;
+  text-decoration: none;
+  font-size: 30px;
+  background-color: white;
+  cursor: pointer;
+  outline: white;
+}
+body #container #main .web .valoracion .estrellas:focus {
+  box-shadow: none;
+  outline: white;
+  border: none;
 }
 body #container #main .web .categorias {
   margin: 5% 5% 5% 0px;
