@@ -6,6 +6,7 @@ var description = new Array;
 var name = "";
 var valoracionesElement;
 var ratedIdWeb = new Array;
+var user;
 
 
 window.onload = function () {
@@ -18,8 +19,6 @@ window.onload = function () {
 	z = document.getElementById("btn");
 
 
-
-	//NAVBAR RESPONSIVE
 	let mainNav = document.getElementById('js-menu');
 	let navBarToggle = document.getElementById("nav-bar-menu");
 
@@ -85,12 +84,13 @@ window.onload = function () {
 
 	}
 
-	//console.log(descriptionWebs)
 
 	var miCookie = readCookie("nombre");
+	user = miCookie;
 	if (miCookie != null) {
 		
 		document.getElementById('welcome').innerText = "Buenas " + miCookie;
+		document.getElementById('welcome2').innerText = " ¿No eres " + miCookie + "?";
 		fallasUsuario(miCookie);
 		showRating();
 	}
@@ -109,85 +109,9 @@ function readCookie(name) {
 
 }
 
-//Funcion que rellena el array de categorias
-function categoria(category) {
-
-
-
-	//console.log(category);
-
-	/* var sringHtml;
-
-	var finalHtml = "";
-
-	for (let i = 0; i < descriptionWebs.length; i++) {
-		//Ponemos la posición uno porque es dónde esta la categoria 
-
-		if (descriptionWebs[i][2] == category) {
-
-			for (let j = 0; j <= 5; j++) {
-				if (j == 1) {
-					var tittle = descriptionWebs[i][j];
-				} else if (j == 3) {
-					var link = descriptionWebs[i][j];
-				} else if (j == 4) {
-					var paragraf = descriptionWebs[i][j];
-				} 
-
-			}
-
-			//Falta anadir el espacio entre categoria: 
-			sringHtml = '<div class="web"> <h2>' + tittle + '</h2>' +
-				'<div class="categorias">Categoría:<a href="#" onclick="categoria("' + category + '")">' + ' ' + category + '</a></div>' +
-				'<a href="' + link + '" target="_blank"><img src="./media/' + tittle + '.png" alt=""></a>' +
-				'<p>' + paragraf + '</p>' + '</div>';
-
-			finalHtml += sringHtml;
-
-			
-
-		}
-
-	}
-
-	document.getElementById("main").innerHTML = "";
-
-	document.getElementById("main").innerHTML = finalHtml;
-
-	webs2 = document.getElementsByClassName("web");
-
-	for (let i = 0; i < webs.length; i++) {
-
-	let valoracion = document.createElement("div");
-		valoracion.classList.add("valoracion");
-		for (let index = 1; index <= 5; index++) {
-			let estrella = document.createElement("button");
-			estrella.addEventListener("click", function () {
-				colorEstrellaPulsada(this, index);
-			});
-			estrella.innerText = '★ ';
-			estrella.dataset.index = index;
-			estrella.dataset.idweb = i;
-			estrella.setAttribute("value", index)
-			estrella.classList.add("estrellas");
-			valoracion.appendChild(estrella);
-		}
-
-		webs2[i].appendChild(valoracion);
-	}
-	
-	
-	finalHtml = ""; */
-
-
-
-}
-
-//FORM REGISTER
 function register() {
 	x.style.left = "-400px";
 	y.style.left = "50px";
-	console.log(document.getElementsByClassName("button-box")[0].offsetWidth);
 
 	if (document.getElementsByClassName("button-box")[0].offsetWidth >= "220") {
 		z.style.left = "110px";
@@ -201,9 +125,6 @@ function login() {
 	y.style.left = "450px";
 	z.style.left = "0";
 }
-
-////////////////////////////////////////////////////////
-
 
 
 
@@ -228,9 +149,6 @@ async function colorEstrellaPulsada(ev, index) {
 	puntuar(ev.dataset.idweb, ev.dataset.index, usuario);
 }
 
-// TODO Hacer el Update para las estrellas
-// tenemos que revisar y borrar la cookie ya creada por si se logea otra persona en el mismo navegador, cerrar sesion
-
 
 function fallasUsuario(usuario) {
 	fetch('/puntuaciones/' + usuario, {
@@ -240,7 +158,9 @@ function fallasUsuario(usuario) {
 	})
 		.then(function (webs) {
 			webs.forEach(web => {
-				ratedIdWeb.push(web.idweb);
+				if(!ratedIdWeb.includes(web.idweb)){
+					ratedIdWeb.push(web.idweb);
+				}
 			});
 			console.log(ratedIdWeb);
 			
@@ -304,7 +224,7 @@ function loginSubmit(formType) {
 
 
 
-				window.location.href = "http://localhost:4000/index.html";
+				window.location.href = "../index.html";
 
 
 			}
@@ -357,5 +277,12 @@ function userRating(userWebs){
 		
 		
 	}
+
+}
+
+function closeSession() {
+	
+	document.cookie = "nombre=" + user +"; expires = Thu, 01 Jan 1970 00:00:00 GMT"
+	window.location.href = "../html/tuEspacio.html";
 
 }

@@ -29,17 +29,19 @@ exports.findAllWebUser = (req,res) => {
 };
 
 exports.updateRating = (req,res) => {
-    console.log(req.params)
-    Puntuacion.updateOne(
+    console.log(req.params.idweb)
+    var idweb = req.params.idWeb;
+    var usuario = req.params.usuario;
+    Puntuacion.update(
     
-        { "idWeb" : req.params.idweb , "usuario" : req.params.usuario },
-        { $set: {"puntuacion" : req.params.puntuacion} }
+        { 'idWeb' : idweb , 'usuario' : usuario },
+        { $set: {'puntuacion' : req.params.puntuacion} }
 
     ).then(puntuaciones=>{
         res.status(200).send(puntuaciones);
     }).catch(err=>{
         res.status(500).send({
-            message: err.message || " Algo fue mal mientras los capturabamos a todos"
+            message: err.message || "NOT WORKING"
         });
     });
 

@@ -47,6 +47,9 @@ body .navbar .main-nav li {
 body .navbar .active {
   display: block;
 }
+body #container {
+  padding-top: 2%;
+}
 body #container .hero {
   height: 100%;
   width: 100%;
@@ -168,10 +171,23 @@ body #container #sidebar a {
 body #container #sidebar a:hover {
   color: white;
 }
-body #container #welcome {
-  text-align: right;
+body #container #bienvenida {
+  margin-left: 5%;
+  display: inline;
+}
+body #container #bienvenida #welcome {
+  display: inline;
+  text-align: left;
   margin-right: 5%;
   font-size: 15px;
+}
+body #container #bienvenida #welcome2 {
+  float: right;
+  margin-top: 0px;
+  display: inline;
+  text-align: right;
+  margin-right: 5%;
+  font-size: 12px;
   text-decoration: underline;
 }
 body #container #main {
@@ -246,6 +262,25 @@ body #container #main .web img {
   }
   body #container #sidebar {
     visibility: visible;
+  }
+  body #container #bienvenida {
+    margin-left: 23%;
+    display: inline;
+  }
+  body #container #bienvenida #welcome {
+    display: inline;
+    text-align: left;
+    margin-right: 5%;
+    font-size: 15px;
+  }
+  body #container #bienvenida #welcome2 {
+    float: right;
+    margin-top: 0px;
+    display: inline;
+    text-align: right;
+    margin-right: 5%;
+    font-size: 12px;
+    text-decoration: underline;
   }
   body #container #main {
     margin: 0;

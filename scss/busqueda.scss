@@ -57,7 +57,7 @@ body {
   }
 
   #container {
-
+    padding-top: 2%;
     .hero{
       height: 100%;
       width: 100%;
@@ -192,11 +192,24 @@ body {
       }
     }
 
-    #welcome{
-      text-align: right;
-      margin-right: 5%;
-      font-size: 15px;
-      text-decoration: underline;
+    #bienvenida{
+      margin-left: 5%;
+      display: inline;
+      #welcome{
+        display: inline;
+        text-align: left;
+        margin-right: 5%;
+        font-size: 15px;
+      }
+      #welcome2{
+        float: right;
+        margin-top: 0px;
+        display: inline;
+        text-align: right;
+        margin-right: 5%;
+        font-size: 12px;
+        text-decoration: underline;
+      }
     }
 
     #main {
@@ -287,7 +300,25 @@ body {
       #sidebar {
         visibility: visible;
       }
-
+      #bienvenida{
+        margin-left: 23%;
+        display: inline;
+        #welcome{
+          display: inline;
+          text-align: left;
+          margin-right: 5%;
+          font-size: 15px;
+        }
+        #welcome2{
+          float: right;
+          margin-top: 0px;
+          display: inline;
+          text-align: right;
+          margin-right: 5%;
+          font-size: 12px;
+          text-decoration: underline;
+        }
+      }
       #main {
         margin: 0;
         width: 75%;
