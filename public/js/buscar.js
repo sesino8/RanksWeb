@@ -206,7 +206,7 @@ function loginSubmit(formType) {
 	//https://ranksweb.herokuapp.com/
 	//http://localhost:4000
 
-	var url = 'http://localhost:4000/user/' + formType;
+	var url = 'https://ranksweb.herokuapp.com/user/' + formType;
 	var data = { "email": email, "password": passwd };
 
 	fetch(url, {
