@@ -1,13 +1,14 @@
 body {
-  font-family: "Josefin Sans", sans-serif;
+  background-color: #D2E9E3;
+  font-family: Helvetica;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 body .navbar {
   font-size: 18px;
-  background-color: white;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: #1b6466;
+  border: 3px solid black;
   padding-bottom: 10px;
 }
 body .navbar .navbar-toggle {
@@ -15,16 +16,14 @@ body .navbar .navbar-toggle {
   top: 10px;
   right: 20px;
   cursor: pointer;
-  color: #0F52BA;
+  color: white;
   font-size: 24px;
 }
 body .navbar .logo {
   display: inline-block;
   font-size: 22px;
-  margin-top: 10px;
+  margin-top: 20px;
   margin-left: 20px;
-  text-decoration: none;
-  color: #0F52BA;
 }
 body .navbar .logo img {
   width: 50%;
@@ -38,7 +37,8 @@ body .navbar .main-nav {
 }
 body .navbar .main-nav .nav-links {
   text-decoration: none;
-  color: #0F52BA;
+  color: black;
+  font: bold;
 }
 body .navbar .main-nav li {
   text-align: center;
@@ -241,6 +241,9 @@ body #container #main .web img {
   }
   body .navbar .logo {
     margin-top: 0;
+    padding-top: 2%;
+    height: 100px;
+    width: 150px;
   }
   body .navbar .logo:hover {
     color: white;
