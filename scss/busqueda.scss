@@ -116,15 +116,18 @@ body {
             background: transparent;
           }
           .submit-btn{
-            width: 85%;
+            width: 45%;
             padding: 10px 30px;
             cursor: pointer;
             display: block;
             margin: auto;
+            margin-top: 10%;
             background: linear-gradient(to right, #ff105f,#ffad06);
             border: 0;
             outline: none;
             border-radius: 30px;
+            font-size: 15px;
+            text-align: center;
           }
           .check-box{
             margin: 30px 10px 30px 0;
@@ -135,13 +138,22 @@ body {
             position: absolute;
             margin: 30px 10px 30px 0;
           }
+          .show-group{
+            float: right;
+            font-size: 10px;
+          }
+          p{
+            text-align: center;
+            font-size: 13px;
+            color: red;
+          }
           
         }
 
         #login{
           left: 50px;
         }
-        #register{
+        #signup{
           left: 450px;
         }
       }
@@ -180,6 +192,13 @@ body {
       }
     }
 
+    #welcome{
+      text-align: right;
+      margin-right: 5%;
+      font-size: 15px;
+      text-decoration: underline;
+    }
+
     #main {
       width: 90%;
       margin: 5%;
@@ -190,6 +209,7 @@ body {
         .valoracion {
           text-align: center;
           padding: 3%;
+          display: none;
     
           .estrellas {
             border: none;
@@ -345,15 +365,16 @@ body {
               background: transparent;
             }
             .submit-btn{
-              width: 85%;
+              width: 45%;
               padding: 10px 30px;
               cursor: pointer;
               display: block;
-              margin: auto;
+              margin-top: 10%;
               background: linear-gradient(to right, #ff105f,#ffad06);
               border: 0;
               outline: none;
               border-radius: 30px;
+              
             }
             .check-box{
               margin: 30px 10px 30px 0;
@@ -363,13 +384,13 @@ body {
               font-size: 12px;
               position: absolute;
             }
-            
+
           }
   
           #login{
             left: 50px;
           }
-          #register{
+          #signup{
             left: 450px;
           }
         }

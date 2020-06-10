@@ -60,18 +60,21 @@
                 </div>
 
                 <form id="login" class="input-group">
-                    <input type="text" class="input-field" placeholder="Nombre de usuario o e-mail" name="client-name" required>
-                    <input type="text" class="input-field" placeholder="Contraseña"required>
-                    <input type="checkbox" class="check-box"><span>Remember Password</span>
-                    <a onclick="loginSubmit()" class="submit-btn">Log In</a>
+                    <input type="text" class="input-field" placeholder="E-mail"required>
+                    <input type="password" class="input-field" placeholder="Password"required>
+                    <a class="show-group" onclick="show('login')">Show</a>
+                    <p></p>
+                    <a onclick="loginSubmit('login')" class="submit-btn">Log In</a>
     
                 </form>
     
-                <form action="/user/signup" method="POST" id="register" class="input-group">
-                    <input type="text" class="input-field" placeholder="Nombre de usuario o e-mail" required>
-                    <input type="text" class="input-field" placeholder="Contraseña" required>
-                    <input type="checkbox" class="check-box"><span>I agree to the terms & conditions</span>
-                    <button type="submit" class="submit-btn">Register</button>
+                <form id="signup" class="input-group">
+                    <input type="text" class="input-field" placeholder="E-mail" required>
+                    <input type="password" class="input-field" placeholder="Password" required>
+                    <a class="show-group" onclick="show('signup')">Show</a>
+                    <p></p>
+                    <input type="checkbox" class="check-box" required><span>I agree to the terms & conditions</span>
+                    <a onclick="loginSubmit('signup')" class="submit-btn">Register</a>
     
                 </form>
 

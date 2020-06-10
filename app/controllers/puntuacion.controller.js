@@ -15,10 +15,10 @@ exports.findAll = (req,res) => {
     });
 };
 
-exports.findOne = (req,res) => {
-    console.log(req.params.puntuacionId);
+exports.findAllWebUser = (req,res) => {
+    console.log(req.params.usuario);
 
-    Puntuacion.find({ "_id" : req.params.puntuacionId }).then(puntuaciones=>{
+    Puntuacion.find({ "usuario" : req.params.usuario }).then(puntuaciones=>{
         res.status(200).send(puntuaciones);
     }).catch(err=>{
         res.status(500).send({
@@ -28,9 +28,14 @@ exports.findOne = (req,res) => {
 
 };
 
-exports.findFalla = (req,res) => {
-    console.log(req.body)
-    Puntuacion.find().then(puntuaciones=>{
+exports.updateRating = (req,res) => {
+    console.log(req.params)
+    Puntuacion.updateOne(
+    
+        { "idWeb" : req.params.idweb , "usuario" : req.params.usuario },
+        { $set: {"puntuacion" : req.params.puntuacion} }
+
+    ).then(puntuaciones=>{
         res.status(200).send(puntuaciones);
     }).catch(err=>{
         res.status(500).send({

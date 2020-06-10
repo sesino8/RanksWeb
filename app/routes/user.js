@@ -21,7 +21,7 @@ router.post(
     [
 
         check("email", "Please enter a valid email").isEmail(),
-        check("password", "Please enter a valid password").isLength({
+        check("password", "Please enter a valid password minium six characters").isLength({
             min: 6
         })
     ],
@@ -86,7 +86,7 @@ router.post(
     "/login",
     [
       check("email", "Please enter a valid email").isEmail(),
-      check("password", "Please enter a valid password").isLength({
+      check("password", "Please enter a valid password minium six characters").isLength({
         min: 6
       })
     ],
