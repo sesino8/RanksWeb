@@ -8,7 +8,11 @@ var valoracionesElement;
 var ratedIdWeb = new Array;
 var user;
 
-
+// TODO tenemos que hacer el alert para las cookies, tenemos que revisar codigo, 
+// hacer paginas de contactanos y categorias ocultarcuando es grande y poner cuando es pequena
+// favicon
+// boton de subir arriba de la página
+// quitar todos los console log
 window.onload = function () {
 
 
