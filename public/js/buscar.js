@@ -3,10 +3,11 @@ var webs = new Array;
 var detalles = new Array;
 var descriptionWebs = new Array;
 var description = new Array;
-var name = "";
 var valoracionesElement;
 var ratedIdWeb = new Array;
 var user;
+var cookieAdv;
+var lastUser = "";
 
 // TODO tenemos que hacer el alert para las cookies, tenemos que revisar codigo, 
 // hacer paginas de contactanos y categorias ocultarcuando es grande y poner cuando es pequena
@@ -63,12 +64,10 @@ window.onload = function () {
 			//Cogemos los enlaces para sacarles cada URL de cada web para después a la hora de filtrar 
 			//que podamos clasificarlas sin problema
 			var element = detalles[i][j].innerText;
-			console.log(element);
 			
 
 			if (detalles[i][j].tagName == 'A') {
 				elementDresciption.push(detalles[i][j].href);
-				console.log(detalles[i][j].href);
 
 			} else if (element.includes("Categoría")) {
 				//Si no es un enlace, sacamos lo que tenga dentro del elemento para después pasarlo al array 
@@ -77,7 +76,6 @@ window.onload = function () {
 
 			} else {
 				elementDresciption.push(element);
-				console.log(element);
 			}
 
 		}
@@ -97,6 +95,12 @@ window.onload = function () {
 		document.getElementById('welcome2').innerText = " ¿No eres " + miCookie + "?";
 		fallasUsuario(miCookie);
 		showRating();
+	}
+
+
+	if(document.cookie.includes("cookie=true") && document.getElementById("cookieAdv")!= null){
+
+		document.getElementById("cookieAdv").style.display = "none";
 	}
 
 }
@@ -134,7 +138,6 @@ function login() {
 
 async function colorEstrellaPulsada(ev, index) {
 
-	console.log(ev.dataset.idweb)
 	var estrellas = document.querySelectorAll(`[  data-idweb = '${ev.dataset.idweb}' ]`);
 	var index = ev.dataset.index;
 
@@ -206,7 +209,7 @@ function loginSubmit(formType) {
 	//https://ranksweb.herokuapp.com/
 	//http://localhost:4000
 
-	var url = 'https://ranksweb.herokuapp.com/user/' + formType;
+	var url = 'http://localhost:4000/user/' + formType;
 	var data = { "email": email, "password": passwd };
 
 	fetch(url, {
@@ -290,7 +293,16 @@ function userRating(userWebs){
 
 function closeSession() {
 	
-	document.cookie = "nombre=" + user +"; expires = Thu, 01 Jan 1970 00:00:00 GMT"
+	document.cookie = "nombre=" + user +"; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+	document.cookie = "cookie= true; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+
 	window.location.href = "../html/tuEspacio.html";
+
+}
+
+function closeCookie() {
+	
+	document.getElementById("cookieAdv").style.display = "none";
+	document.cookie = "cookie= true; max-age=3600; path=/";
 
 }

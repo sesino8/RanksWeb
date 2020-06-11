@@ -230,6 +230,24 @@ body #container #main .web h2 {
     padding: 0;
     margin: 0;
   }
+  body #cookieAdv {
+    display: block;
+    position: fixed;
+    width: 100%;
+    bottom: 10px;
+    padding: 2%;
+    background-color: #1b6466;
+  }
+  body #cookieAdv #info {
+    color: yellow;
+  }
+  body #cookieAdv #closeCookie {
+    position: fixed;
+    margin-left: 5%;
+    border-radius: 5px;
+    border: solid black;
+    background-color: rgba(197, 145, 0, 0.4);
+  }
   body .navbar {
     display: flex;
     justify-content: space-between;
