@@ -8,6 +8,25 @@ body {
   padding: 0;
   margin: 0;
 
+  #cookieAdv{
+    display: block;
+    position: fixed;
+    width: 100%;
+    bottom: 10px;
+    padding: 2%;
+    background-color: rgba(27, 100, 102, 1);
+    #info{
+      color: yellow;
+    }
+    #closeCookie{
+      position: fixed;
+      margin-left: 5%;
+      border-radius: 5px;
+      border: solid black;
+      background-color: rgba(197, 145, 0, 0.4);
+    }
+  }
+
   #myBtn {
     width: 50px;
     display: none; 

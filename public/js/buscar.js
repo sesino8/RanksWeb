@@ -307,7 +307,7 @@ function closeCookie() {
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-  if (document.documentElement.scrollTop > 1000) {
+  if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
     myBtn.style.display = "block";
   } else {
     myBtn.style.display = "none";
@@ -316,5 +316,6 @@ function scrollFunction() {
 
 // When the user clicks on the button, scroll to the top of the document
 function topFunction() {
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+	document.body.scrollTop = 0; 
+	document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
