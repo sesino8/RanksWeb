@@ -9,12 +9,12 @@ var user;
 var cookieAdv;
 var lastUser = "";
 
-// TODO tenemos que hacer el alert para las cookies, tenemos que revisar codigo, 
+// TODO tenemos que revisar codigo, 
 // hacer paginas de contactanos y categorias ocultarcuando es grande y poner cuando es pequena
 // favicon
-// boton de subir arriba de la página
-// quitar todos los console log
 window.onload = function () {
+
+	mybutton = document.getElementById("myBtn");
 
 
 	var elementDresciption = new Array;
@@ -169,7 +169,6 @@ function fallasUsuario(usuario) {
 					ratedIdWeb.push(web.idweb);
 				}
 			});
-			console.log(ratedIdWeb);
 			
 			userRating(webs);
 		});
@@ -192,7 +191,6 @@ function puntuar(idweb, value, usuario) {
 		return response.json();
 	})
 		.then(function (falla) {
-			console.log(falla);
 			
 		});
 
@@ -203,13 +201,11 @@ function loginSubmit(formType) {
 	email = form.children[0].value;
 	passwd = form.children[1].value;
 
-	console.log(passwd);
-
 
 	//https://ranksweb.herokuapp.com/
 	//http://localhost:4000
 
-	var url = 'http://localhost:4000/user/' + formType;
+	var url = 'https://ranksweb.herokuapp.com/user/' + formType;
 	var data = { "email": email, "password": passwd };
 
 	fetch(url, {
@@ -221,7 +217,6 @@ function loginSubmit(formType) {
 	}).then(res => res.json())
 		.catch(error => console.error('Error:', error))
 		.then(function (response) {
-			console.log(response)
 			if (response.errors != null) {
 				form.children[3].innerText = response.errors[0].msg
 
@@ -246,8 +241,6 @@ function loginSubmit(formType) {
 function show(formType) {
 	var passwdElement = document.getElementById(formType).children[1];
 	var showElement = document.getElementById(formType).children[2];
-	console.log(passwdElement.type);
-
 	if (passwdElement.type == "password") {
 		passwdElement.type = "text";
 		showElement.innerText = "Hide"
@@ -305,4 +298,23 @@ function closeCookie() {
 	document.getElementById("cookieAdv").style.display = "none";
 	document.cookie = "cookie= true; max-age=3600; path=/";
 
+}
+
+
+//Get the button:
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.documentElement.scrollTop > 1000) {
+    myBtn.style.display = "block";
+  } else {
+    myBtn.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
