@@ -8,100 +8,19 @@ var ratedIdWeb = new Array;
 var user;
 var cookieAdv;
 var lastUser = "";
+var websFetch = new Array;
 
 // TODO tenemos que revisar codigo, 
 // hacer paginas de contactanos y categorias ocultarcuando es grande y poner cuando es pequena
 // favicon
-window.onload = function () {
+window.onload = async function () {
 
 	mybutton = document.getElementById("myBtn");
+	var main = document.getElementById("main");
+
+	cargarWebs();
 
 
-	var elementDresciption = new Array;
-
-	x = document.getElementById("login");
-	y = document.getElementById("signup");
-	z = document.getElementById("btn");
-
-
-	let mainNav = document.getElementById('js-menu');
-	let navBarToggle = document.getElementById("nav-bar-menu");
-
-	navBarToggle.addEventListener('click', function () {
-		mainNav.classList.toggle('active');
-	});
-
-
-	webs = document.getElementsByClassName("web");
-
-	for (let i = 0; i < webs.length; i++) {
-		detalles.push(webs[i].children);
-		let valoracion = document.createElement("div");
-		valoracion.classList.add("valoracion");
-		for (let index = 1; index <= 5; index++) {
-			let estrella = document.createElement("button");
-			estrella.addEventListener("click", function () {
-				colorEstrellaPulsada(this, index);
-			});
-			estrella.innerText = '★ ';
-			estrella.dataset.index = index;
-			estrella.dataset.idweb = i;
-			estrella.setAttribute("value", index)
-			estrella.classList.add("estrellas");
-			valoracion.appendChild(estrella);
-		}
-
-		webs[i].appendChild(valoracion);
-
-	}
-
-	for (let i = 0; i < detalles.length; i++) {
-		//id web
-		elementDresciption.push(i);
-
-
-		for (let j = 0; j < detalles[i].length; j++) {
-			//Cogemos los enlaces para sacarles cada URL de cada web para después a la hora de filtrar 
-			//que podamos clasificarlas sin problema
-			var element = detalles[i][j].innerText;
-			
-
-			if (detalles[i][j].tagName == 'A') {
-				elementDresciption.push(detalles[i][j].href);
-
-			} else if (element.includes("Categoría")) {
-				//Si no es un enlace, sacamos lo que tenga dentro del elemento para después pasarlo al array 
-				var word = element.substring(11, element.length);
-				elementDresciption.push(word);
-
-			} else {
-				elementDresciption.push(element);
-			}
-
-		}
-		descriptionWebs.push(elementDresciption);
-		//Reiniciamos array para que no se sumen todos los elementos
-		elementDresciption = new Array;
-
-
-	}
-
-
-	var miCookie = readCookie("nombre");
-	user = miCookie;
-	if (miCookie != null) {
-		
-		document.getElementById('welcome').innerText = "Buenas " + miCookie;
-		document.getElementById('welcome2').innerText = " ¿No eres " + miCookie + "?";
-		fallasUsuario(miCookie);
-		showRating();
-	}
-
-
-	if(document.cookie.includes("cookie=true") && document.getElementById("cookieAdv")!= null){
-
-		document.getElementById("cookieAdv").style.display = "none";
-	}
 
 }
 
@@ -164,10 +83,14 @@ function fallasUsuario(usuario) {
 		return response.json();
 	})
 		.then(function (webs) {
+			
 			webs.forEach(web => {
+				console.log(ratedIdWeb);
+				
 				if(!ratedIdWeb.includes(web.idweb)){
 					ratedIdWeb.push(web.idweb);
 				}
+
 			});
 			
 			userRating(webs);
@@ -184,6 +107,7 @@ function puntuar(idweb, value, usuario) {
 		methodProve = "PUT";
 		
 	}
+	
 
 	fetch('/puntuaciones/' + idweb + "/" + value + "/" + usuario, {
 		method: methodProve
@@ -191,6 +115,7 @@ function puntuar(idweb, value, usuario) {
 		return response.json();
 	})
 		.then(function (falla) {
+			console.log(falla);
 			
 		});
 
@@ -205,7 +130,7 @@ function loginSubmit(formType) {
 	//https://ranksweb.herokuapp.com/
 	//http://localhost:4000
 
-	var url = 'https://ranksweb.herokuapp.com/user/' + formType;
+	var url = 'http://localhost:4000/user/' + formType;
 	var data = { "email": email, "password": passwd };
 
 	fetch(url, {
@@ -227,8 +152,6 @@ function loginSubmit(formType) {
 				form.children[3].innerText = "Success";
 				name = email.substring(0, email.indexOf("@"));
 				document.cookie = "nombre=" + name + "; max-age=3600; path=/";
-
-
 
 				window.location.href = "../index.html";
 
@@ -253,12 +176,13 @@ function show(formType) {
 }
 
 function showRating() {
+	valoracionesElement = document.getElementsByClassName("valoracion");
+	
 
-	valoracionesElement = document.getElementsByClassName('valoracion');
-		
 		for (let i = 0; i < valoracionesElement.length; i++) {
 						
 			valoracionesElement[i].style.display = "block";
+			
 		}
 
 
@@ -271,6 +195,7 @@ function userRating(userWebs){
 		var webID = userWebs[i].idweb;
 		var puntuacion = userWebs[i].puntuacion;
 
+		
 		var idWebChilds = valoracionesElement[webID].children;
 
 		for (let j = 0; j < puntuacion; j++) {
@@ -288,7 +213,6 @@ function closeSession() {
 	
 	document.cookie = "nombre=" + user +"; expires = Thu, 01 Jan 1970 00:00:00 GMT";
 	document.cookie = "cookie= true; expires = Thu, 01 Jan 1970 00:00:00 GMT";
-
 	window.location.href = "../html/tuEspacio.html";
 
 }
@@ -308,7 +232,8 @@ window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
   if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
-    myBtn.style.display = "block";
+	myBtn.style.display = "block";
+	closeCookie();
   } else {
     myBtn.style.display = "none";
   }
@@ -318,4 +243,144 @@ function scrollFunction() {
 function topFunction() {
 	document.body.scrollTop = 0; 
 	document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
+async function createWeb() {
+
+	var loginChilds = document.getElementById("login").children;
+	var idweb = await countAllWebs();
+	var name = loginChilds[0].value;
+	var categoria = loginChilds[1].value;
+	var link = loginChilds[2].value;
+	var image = loginChilds[3].value;
+	var description = loginChilds[4].value;
+	var verified = "false";
+
+
+		fetch('/web/'+ idweb + '/' + name + '/' + categoria + '/' + link + '/' + image + '/' + description + '/' + verified, {
+		method: "POST"
+	}).then(function (response) {
+		return response.json();
+	})
+		.then(function (falla) {
+			console.log(falla)
+		});
+
+	
+}
+
+function cargarWebs() {
+	var verified = "true";
+	fetch('/web/' + verified, {
+		method: "GET"
+	}).then(function (response) {
+		return response.json();
+	})
+		.then(function (web) {
+				
+				
+				for (let i = 0; i < web.length; i++) {
+
+					var divWeb = document.createElement("div");
+					divWeb.classList = "web";
+					var h2 = document.createElement("h2");
+					h2.innerText = web[i].name;	
+					h2.id = web[i].categoria;
+					divWeb.appendChild(h2);
+					
+					var divCategorias = document.createElement("div");
+					divCategorias.classList = "categorias";
+					divCategorias.innerText = "Categoría: ";
+					var aCategoria = document.createElement("A");;
+					aCategoria.href = '#'+ web[i].categoria;
+					aCategoria.innerText = web[i].categoria;
+					divCategorias.appendChild(aCategoria);
+					divWeb.appendChild(divCategorias);
+
+					var  aImg = document.createElement("A");
+					aImg.href = web[i].link;
+					var img = document.createElement("IMG");
+					img.src = web[i].image;
+					img.alt = "Imagen de la web: " + web[i].name;
+					aImg.appendChild(img)
+					divWeb.appendChild(aImg);
+					
+					var p = document.createElement("p");
+					p.innerText = web[i].description;
+					divWeb.appendChild(p);
+
+					let valoracion = document.createElement("div");
+					valoracion.classList.add("valoracion");
+					for (let index = 1; index <= 5; index++) {
+						let estrella = document.createElement("button");
+						estrella.addEventListener("click", function () {
+							colorEstrellaPulsada(this, index);
+						});
+						estrella.innerText = '★ ';
+						estrella.dataset.index = index;
+						estrella.dataset.idweb = i;
+						estrella.setAttribute("value", index)
+						estrella.classList.add("estrellas");
+						valoracion.appendChild(estrella);
+					}
+					divWeb.appendChild(valoracion);
+
+					main.appendChild(divWeb);
+
+					
+				}
+
+				x = document.getElementById("login");
+				y = document.getElementById("signup");
+				z = document.getElementById("btn");
+			
+			
+				let mainNav = document.getElementById('js-menu');
+				let navBarToggle = document.getElementById("nav-bar-menu");
+			
+				navBarToggle.addEventListener('click', function () {
+					mainNav.classList.toggle('active');
+				});
+			
+				
+				webs = document.getElementsByClassName("web");
+			
+			
+				var miCookie = readCookie("nombre");
+				user = miCookie;
+				if (miCookie != null) {
+					
+					document.getElementById('welcome').innerText = "Buenas " + miCookie;
+					document.getElementById('welcome2').innerText = " ¿No eres " + miCookie + "?";
+					fallasUsuario(miCookie);
+					showRating();
+				}
+			
+			
+				if(document.cookie.includes("cookie=true") && document.getElementById("cookieAdv")!= null){
+			
+					document.getElementById("cookieAdv").style.display = "none";
+				}
+				
+
+		});
+
+	
+
+}
+
+function countAllWebs() {
+
+	fetch('/web/', {
+		method: "GET"
+	}).then(function (response) {
+		return response.json();
+	})
+		.then(function (count) {
+			console.log(count.message.substring(21, count.message.length));
+			
+			return(count.message.substring(21, count.message.length));
+
+			
+		});
 }

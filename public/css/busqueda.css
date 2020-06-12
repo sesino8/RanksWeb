@@ -100,6 +100,13 @@ body #container .hero .form-box {
   padding: 5px;
   overflow: hidden;
 }
+body #container .hero .form-box select {
+  box-shadow: 0 0 20px 9px #24ff411f;
+  border-radius: 30px;
+  margin: 5% 5% 5% 0%;
+  width: 175px;
+  background: linear-gradient(to right, #d2e9e3, #2c3532);
+}
 body #container .hero .form-box .button-box {
   width: 175px;
   margin: 35px auto;
@@ -266,6 +273,9 @@ body #container #main .web h2 {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+  }
+  body #valoradas {
+    margin: 5%;
   }
   body #cookieAdv {
     display: block;

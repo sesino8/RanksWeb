@@ -6,10 +6,10 @@
     <title>Datos Abiertos con NodeJS</title>
 
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="icon" type="image/png" href="./media/favicon.png">
+    <link rel="icon" type="image/png" href="../media/favicon.png">
 
 
-    <script src="../js/buscar.js"></script>
+    <script src="../js/buscar copy.js"></script>
 
 
     <style>
@@ -38,7 +38,7 @@
                 <a href="categorias.html" class="nav-links">Categorías</a>
             </li>
             <li>
-                <a href="tuEspacio.html" class="nav-links">Tú espacio</a>
+                <a id="tuEspacio" href="tuEspacio.html" class="nav-links">Tú espacio</a>
             </li>
             <li>
                 <a href="contactanos.html" class="nav-links">Contactanós</a>
@@ -61,14 +61,14 @@
                 </div>
 
                 <form id="login" class="input-group">
-                    <input type="text" class="input-field" placeholder="E-mail"required>
-                    <input type="password" class="input-field" placeholder="Password"required>
+                    <input type="text" class="input-field" placeholder="E-mail" required>
+                    <input type="password" class="input-field" placeholder="Password" required>
                     <a class="show-group" onclick="show('login')">Show</a>
                     <p></p>
                     <a onclick="loginSubmit('login')" class="submit-btn">Log In</a>
-    
+
                 </form>
-    
+
                 <form id="signup" class="input-group">
                     <input type="text" class="input-field" placeholder="E-mail" required>
                     <input type="password" class="input-field" placeholder="Password" required>
@@ -76,29 +76,34 @@
                     <p></p>
                     <input type="checkbox" class="check-box" required><span>I agree to the terms & conditions</span>
                     <a onclick="loginSubmit('signup')" class="submit-btn">Register</a>
-    
+
                 </form>
 
             </div>
 
-            
+
 
         </div>
-
-        <div id="main">
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum
-                tortor
-                quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas
-                semper. Aenean
-                ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper
-                pharetra.
-                Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget
-                tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in
-                turpis
-                pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu
-                vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
-                facilisis
-                luctus, metus</p>
+        <div id="container">
+            <div id="main">
+                <h2>Webs Valoradas</h2>
+                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                    Vestibulum
+                    tortor
+                    quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas
+                    semper. Aenean
+                    ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper
+                    pharetra.
+                    Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit
+                    eget
+                    tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in
+                    turpis
+                    pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas
+                    augue, eu
+                    vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
+                    facilisis
+                    luctus, metus</p>
+            </div>
 
         </div>
     </div>

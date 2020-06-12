@@ -16,7 +16,9 @@ const PORT = process.env.PORT || 4000;
 // Middleware
 app.use(bodyParser.json());
 
+require('./app/routes/web.routes.js')(app);
 require('./app/routes/puntuaciones.routes.js')(app);
+
 
 mongoose.Promise = global.Promise;
 
@@ -33,6 +35,7 @@ app.get("/api", (req, res) => {
  * Method - *
  */
 app.use("/user", user);
+
 
 app.listen(PORT, (req, res) => {
   console.log(`Server Started at PORT ${PORT}`);

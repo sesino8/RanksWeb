@@ -28,6 +28,7 @@ exports.findAllWebUser = (req,res) => {
 
 };
 
+
 exports.updateRating = (req,res) => {
     console.log(req.params.idweb)
     var idweb = req.params.idWeb;
