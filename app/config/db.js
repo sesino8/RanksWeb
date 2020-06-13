@@ -3,7 +3,7 @@
 const mongoose = require("mongoose");
 
 // Replace this with your MONGOURI.
-const MONGOURI = "mongodb+srv://sesino8:Paiporta123@cluster0-uef9i.mongodb.net/ranksweb?retryWrites=true&w=majority";
+const MONGOURI = "mmongodb+srv://sesino8:Paiporta123@cluster0-uef9i.mongodb.net/ranksweb?retryWrites=true&w=majority";
 
 const InitiateMongoServer = async () => {
   try {
