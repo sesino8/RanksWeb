@@ -7,9 +7,9 @@
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" type="image/png" href="./media/favicon.png">
-  <link rel="stylesheet" type="text/css" href="./css/busqueda.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/busqueda.css" />
 
-  <script src="js/buscar.js"></script>
+  <script src="js/scriptIndex.js"></script>
 
   <style>
     @import url(./css/css/font-awesome.css);
@@ -21,7 +21,11 @@
 <body>
 
   <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
-  <div id="cookieAdv">Utilizamos cookies para mejorar su experiencia. Al continuar visitando este sitio, usted acepta nuestro uso de cookies.<a id="info" href="./html/cookies.html">Mas información</a><button id="closeCookie" onclick="closeCookie()">Entendido</button></div>
+  <div id="cookieAdv">Utilizamos cookies para mejorar su experiencia. Al continuar visitando este sitio, usted acepta
+    nuestro uso de cookies.<a id="info" href="./html/cookies.html">Mas información</a><button id="closeCookie"
+      onclick="closeCookie()">Entendido</button></div>
+
+     
 
 
   <div class="navbar">
@@ -35,9 +39,6 @@
         <a href="index.html" class="nav-links">Inicio</a>
       </li>
       <li>
-        <a href="./html/categorias.html" class="nav-links">Categorías</a>
-      </li>
-      <li>
         <a id="tuEspacio" href="./html/tuEspacio.html" class="nav-links">Tú espacio</a>
       </li>
       <li>
@@ -47,6 +48,7 @@
   </div>
 
   <div id="container">
+    
     <div id="sidebar">
 
       <h3 class="tittle">Categorías</h3>
@@ -70,53 +72,98 @@
         <li>
           <a href="#Deportes">Deportes</a>
         </li>
+        <li>
+          <p></p>
+        </li>
+        <li>
+          <a onclick='cargarWebs("false")'>Sugeridas por usuarios</a>
+        </li>
       </ul>
+
+
 
     </div>
 
     <div id="bienvenida">
       <h1 id="welcome"></h1>
-    <a onclick="closeSession()"id="welcome2"></a>
+      <a onclick="closeSession()" id="welcome2"></a>
     </div>
-    
-    <button onclick="findAll()">asssssssss</button>
+
+    <button id="insertar" onclick="openHero()">Insertar Web</button>
+
+    <div id="categorias">
+
+      <h3>Categorías</h3>
+
+      <ul>
+        <li>
+          <a href="#Peliculas">Peliculas</a>
+        </li>
+        <li>
+          <a href="#Decoracion">Decoracion</a>
+        </li>
+        <li>
+          <a href="#Cocina">Cocina</a>
+        </li>
+        <li>
+          <a href="#Bricolaje">Bricolaje</a>
+        </li>
+        <li>
+          <a href="#Interiorismo">Interiorismo</a>
+        </li>
+        <li>
+          <a href="#Deportes">Deportes</a>
+        </li>
+        <li>
+          <p></p>
+        </li>
+        <li>
+          <a onclick='cargarWebs("false")'>Sugeridas por usuarios</a>
+        </li>
+      </ul>
+        
+    </div>
 
     <div class="hero">
 
       <div class="form-box">
 
-          <div class="button-box">
+        <div class="button-box">
 
-              <div style="width: 100%;"id="btn"></div>
-              <button  type="button" class="toggle-btn" style="width: 100%;">Añadir Web</button >
+          <div style="width: 100%;" id="btn"></div>
+          <button onclick="closeHero()" type="button" class="toggle-btn" style="width: 100%;">Cerrar</button>
 
-          </div>
+        </div>
 
-          <form id="login" class="input-group">
-              <input type="text" class="input-field" placeholder="Nombre" required>
-              <select name="Categorías">
-                <option value="Peliculas">Peliculas</option> 
-                <option value="Decoracion">Decoracion</option> 
-                <option value="Cocina">Cocina</option>
-                <option value="Bricolaje">Bricolaje</option> 
-                <option value="Interiorismo">Interiorismo</option> 
-                <option value="Deportes">Deportes</option> 
-             </select>
-              <input type="text" class="input-field" placeholder="Link de la web" required>
-              <input type="text" class="input-field" placeholder="Imagen" required>
-              <input id="formDescription"type="text" class="input-field" placeholder="Descripcion" required>
-              <button type="button" onclick="createWeb()" class="submit-btn">Añadir</button>
+        <form id="login" class="input-group">
+          <p id="result"></p>
+          <input type="text" class="input-field" placeholder="Nombre" required>
+          <select name="Categorías">
+            <option value="Peliculas">Peliculas</option>
+            <option value="Decoracion">Decoracion</option>
+            <option value="Cocina">Cocina</option>
+            <option value="Bricolaje">Bricolaje</option>
+            <option value="Interiorismo">Interiorismo</option>
+            <option value="Deportes">Deportes</option>
+          </select>
+          <input type="text" class="input-field" placeholder="Link de la web" required>
+          <input id="imageForm" type="file" accept="image/png, image/jpeg" class="input-field" placeholder="Imagen"
+            name="photo" required>
+          <input id="formDescription" type="text" class="input-field" placeholder="Descripcion" required>
+          <button type="button" onclick="createWeb()" class="submit-btn">Añadir</button>
 
-          </form>
+        </form>
 
       </div>
 
+      
 
 
-  </div>
+
+    </div>
 
     <div id="main">
-      
+
 
     </div>
   </div>

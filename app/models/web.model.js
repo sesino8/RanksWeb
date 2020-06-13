@@ -15,16 +15,13 @@ const esquema = mongoose.Schema({
     },
     image: {
     type: String,
+    data: Buffer,
     },
     description: {
     type: String,
     },
     verified: {
     type: String,
-    },
-    createdAt: {
-    type: Date,
-    default: Date.now()
     }
     });
 

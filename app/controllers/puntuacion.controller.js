@@ -30,13 +30,13 @@ exports.findAllWebUser = (req,res) => {
 
 
 exports.updateRating = (req,res) => {
-    console.log(req.params.idweb)
-    var idweb = req.params.idWeb;
+    console.log(req.params.idWeb)
+    var idweb = req.params.idweb;
     var usuario = req.params.usuario;
-    Puntuacion.update(
+    Puntuacion.updateOne(
     
-        { 'idWeb' : idweb , 'usuario' : usuario },
-        { $set: {'puntuacion' : req.params.puntuacion} }
+        { "idweb" : idweb , "usuario" : usuario },
+        { $set: {"puntuacion" : req.params.puntuacion} }
 
     ).then(puntuaciones=>{
         res.status(200).send(puntuaciones);

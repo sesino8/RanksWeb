@@ -14,8 +14,8 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 // Middleware
-app.use(bodyParser.json());
-
+app.use(express.urlencoded());
+app.use(express.json({limit:"10mb"}));
 require('./app/routes/web.routes.js')(app);
 require('./app/routes/puntuaciones.routes.js')(app);
 

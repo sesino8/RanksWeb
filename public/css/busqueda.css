@@ -1,5 +1,5 @@
 body {
-  background-color: #D2E9E3;
+  background-color: #d2e9e3;
   font-family: Helvetica;
   box-sizing: border-box;
   padding: 0;
@@ -84,6 +84,27 @@ body .navbar .active {
 }
 body #container {
   padding-top: 2%;
+}
+body #container h3 {
+  text-decoration: underline;
+}
+body #container #categorias {
+  display: block;
+  margin: 0% 10% 0% 10%;
+}
+body #container #categorias ul li {
+  list-style: none;
+}
+body #container #categorias ul li a {
+  text-decoration: none;
+  color: black;
+}
+body #container #insertar {
+  box-shadow: 0 0 20px 9px #7283741f;
+  border-radius: 30px;
+  border: 3px solid black;
+  width: 100px;
+  background: linear-gradient(to right, #d2e9e3, #2c3532);
 }
 body #container .hero {
   height: 100%;
@@ -332,6 +353,9 @@ body #container #main .web h2 {
   }
   body .navbar .main-nav .li {
     margin: 0;
+  }
+  body #container #categorias {
+    display: none;
   }
   body #container #sidebar {
     visibility: visible;
