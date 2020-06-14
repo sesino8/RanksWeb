@@ -60,7 +60,7 @@ function closeHero() {
 	document.getElementById("main").style.display = "block";
 	document.getElementById("insertar").style.visibility = "visible";
 	document.getElementById("categorias").style.visibility = "visible";
-	document.getElementById("categorias").style.visibility = "block";
+	document.getElementById("categorias").style.display = "block";
 
 
 
