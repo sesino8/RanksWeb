@@ -104,7 +104,7 @@ body {
     }
 
     #categorias {
-      visibility: visible;
+      display: block;
       margin: 0% 10% 0% 10%;
       
       ul {
@@ -400,7 +400,7 @@ body {
 
     #container {
       #categorias {
-        visibility: hidden;
+        display: none !important;
       }
       #sidebar {
         visibility: visible;
