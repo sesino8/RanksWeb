@@ -5,6 +5,12 @@ exports.findAll = (req, res) => {
 
     console.log(req.body)
     Web.find({ "verified": req.params.verified, "categoria": req.params.categoria }).then(web => {
+        const fs = require("fs"); 
+    if (!fs.existsSync(web.image)) {
+        web.image = "/media/problems.png";
+    }
+    console.log(web.image);
+    
         res.status(200).send(web);
     }).catch(err => {
         res.status(500).send({
