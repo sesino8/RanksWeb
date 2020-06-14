@@ -70,7 +70,7 @@ function openHero() {
 	document.getElementById("sidebar").style.display = "none";
 	document.getElementById("main").style.display = "none";
 	document.getElementById("insertar").style.visibility = "hidden";
-	document.getElementById("categorias").style.display = "hidden";
+	document.getElementById("categorias").style.visibility = "hidden";
 
 
 
