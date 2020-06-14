@@ -1,8 +1,11 @@
 $background-white: white;
 $margin-prefered: 10px;
+$primary-color: rgba(27, 100, 102, 1);
+$secondary-color: #d2e9e3;
+$avise-color: rgba(197, 145, 0, 0.4);
 
 body {
-  background-color: #d2e9e3;
+  background-color: $secondary-color;
   font-family: Helvetica;
   box-sizing: border-box;
   padding: 0;
@@ -14,7 +17,7 @@ body {
     width: 100%;
     bottom: 10px;
     padding: 2%;
-    background-color: rgba(27, 100, 102, 1);
+    background-color: $primary-color;
     #info {
       color: yellow;
     }
@@ -23,7 +26,7 @@ body {
       margin-left: 5%;
       border-radius: 5px;
       border: solid black;
-      background-color: rgba(197, 145, 0, 0.4);
+      background-color: $avise-color;
     }
   }
 
@@ -36,8 +39,8 @@ body {
     z-index: 99;
     border: none;
     outline: none;
-    background-color: #1b6466;
-    color: white;
+    background-color: $primary-color;
+    color: $background-white;
     cursor: pointer;
     padding: 15px;
     border-radius: 10px;
@@ -98,22 +101,21 @@ body {
   #container {
     padding-top: 2%;
 
-    h3{
+    h3 {
       text-decoration: underline;
-      
     }
 
     #categorias {
       display: block;
       margin: 0% 10% 0% 10%;
-      
+
       ul {
         li {
           list-style: none;
-         a{
-          text-decoration: none;
-          color: black;
-         }
+          a {
+            text-decoration: none;
+            color: black;
+          }
         }
       }
     }

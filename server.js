@@ -1,5 +1,4 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const user = require("./app/routes/user"); 
 const InitiateMongoServer = require("./app/config/db");
 const mongoose = require('mongoose');
@@ -10,10 +9,8 @@ InitiateMongoServer();
 
 const app = express();
 
-// PORT
 const PORT = process.env.PORT || 4000;
 
-// Middleware
 app.use(express.urlencoded());
 app.use(express.json({limit:"10mb"}));
 require('./app/routes/web.routes.js')(app);
@@ -28,12 +25,6 @@ app.get("/api", (req, res) => {
   res.json({ message: "API Working" });
 });
 
-
-/**
- * Router Middleware
- * Router - /user/*
- * Method - *
- */
 app.use("/user", user);
 
 

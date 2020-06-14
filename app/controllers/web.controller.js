@@ -54,7 +54,6 @@ exports.findWeb = (req, res) => {
 
 exports.create = (req, res) => {
 
-    // Validamos el puntuacion
     if (!req.body) {
         return res.status(400).send({
             message: "puntuacion Vacio..."

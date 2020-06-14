@@ -207,11 +207,8 @@ function loginSubmit(formType) {
 
 				setTimeout(function(){ window.location.href = "../index.html"; },1500);
 
-
-
 			}
 		})
-
 }
 
 function show(formType) {
@@ -341,7 +338,7 @@ async function createWeb() {
 	var image = selectedImage;
 	var name = loginChilds[1].value;
 	var categoria = loginChilds[2].value;
-	var link = loginChilds[3].value;
+	var link = '"'+loginChilds[3].value+'"';
 	var description = loginChilds[5].value;
 	var verified = "false";
 

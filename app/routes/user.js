@@ -1,5 +1,3 @@
-// Filename : user.js
-
 const express = require("express");
 const { check, validationResult} = require("express-validator");
 const bcrypt = require("bcryptjs");
@@ -8,13 +6,8 @@ const router = express.Router();
 const auth = require("../middleware/auth");
 const User = require("../models/user");
 
-process.setMaxListeners(Infinity); // <== Important line
+process.setMaxListeners(Infinity);
 
-/**
- * @method - POST
- * @param - /signup
- * @description - User SignUp
- */
 
 router.post(
     "/signup",

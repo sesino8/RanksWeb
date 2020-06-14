@@ -1,7 +1,5 @@
 const Puntuacion = require('../models/puntuacion.model.js');
 
-// Obtener todos los puntuaciones
- 
 
 exports.findAll = (req,res) => {
 
@@ -10,7 +8,7 @@ exports.findAll = (req,res) => {
         res.status(200).send(puntuaciones);
     }).catch(err=>{
         res.status(500).send({
-            message: err.message || " Algo fue mal mientras los capturabamos a todos"
+            message: err.message || "NOT WORKING"
         });
     });
 };
@@ -22,12 +20,11 @@ exports.findAllWebUser = (req,res) => {
         res.status(200).send(puntuaciones);
     }).catch(err=>{
         res.status(500).send({
-            message: err.message || " Algo fue mal mientras los capturabamos a todos"
+            message: err.message || "NOT WORKING"
         });
     });
 
 };
-
 
 exports.updateRating = (req,res) => {
     console.log(req.params.idWeb)
@@ -49,16 +46,13 @@ exports.updateRating = (req,res) => {
 };
 
 
-// Crear y salvar
 exports.create = (req,res)=>{
     
-    // Validamos el puntuacion
     if (!req.body){
         return res.status(400).send({
            message:"puntuacion Vacio..." 
         });
     }
-
 
     const puntuacion = new Puntuacion({
         idweb: req.params.idweb || "idWeb vacio",

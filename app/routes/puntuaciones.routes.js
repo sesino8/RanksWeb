@@ -7,10 +7,10 @@ module.exports = (app) => {
     // Retrieve all puntuaciones
     app.get('/puntuaciones', puntuaciones.findAll);
 
-    // Retrieve a single puntuaciones with puntuacionId
+    // Retrieve a single puntuaciones with user
     app.get('/puntuaciones/:usuario', puntuaciones.findAllWebUser);
 
-    // Retrieve a single puntuaciones with puntuacionId
+    // Updare a single puntuaciones with idweb,puntuacion,usuario
     app.put('/puntuaciones/:idweb/:puntuacion/:usuario', puntuaciones.updateRating);
 
 }
