@@ -400,7 +400,7 @@ body {
 
     #container {
       #categorias {
-        visibility: hidden;
+        visibility: hidden !important;
       }
       #sidebar {
         visibility: visible;
