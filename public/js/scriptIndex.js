@@ -59,6 +59,7 @@ function closeHero() {
 	document.getElementById("sidebar").style.display = "block";
 	document.getElementById("main").style.display = "block";
 	document.getElementById("insertar").style.visibility = "visible";
+	document.getElementById("categorias").style.display = "block";
 
 
 
