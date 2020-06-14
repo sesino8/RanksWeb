@@ -104,7 +104,7 @@ body {
     }
 
     #categorias {
-      visibility: visible;
+      display: block;
       margin: 0% 10% 0% 10%;
       
       ul {
@@ -130,7 +130,6 @@ body {
       width: 100%;
       background-color: #d2e9e3;
       position: absolute;
-      visibility: visible;
 
       .form-box {
         width: 280px;
@@ -401,8 +400,7 @@ body {
 
     #container {
       #categorias {
-        visibility: hidden;
-
+        display: none;
       }
       #sidebar {
         visibility: visible;
@@ -447,8 +445,6 @@ body {
         background-position: center;
         background-size: cover;
         position: absolute;
-        visibility: hidden;
-
 
         .form-box {
           width: 280px;
