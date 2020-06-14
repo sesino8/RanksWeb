@@ -401,6 +401,7 @@ body {
     #container {
       #categorias {
         visibility: hidden !important;
+        display: none !important;
       }
       #sidebar {
         visibility: visible;
