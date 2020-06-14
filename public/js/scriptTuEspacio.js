@@ -110,8 +110,6 @@ function fallasUsuario(usuario) {
 				if (!ratedIdWeb.includes(web.idweb)) {
 					ratedIdWeb.push(web.idweb);
 				}
-				console.log(ratedIdWeb);
-
 
 			});
 
@@ -137,7 +135,6 @@ function puntuar(idweb, value, usuario) {
 		return response.json();
 	})
 		.then(function (falla) {
-			console.log(falla);
 
 		});
 
@@ -276,7 +273,6 @@ function createWebs() {
 		return response.json();
 	})
 		.then(function (falla) {
-			console.log(falla)
 		});
 
 
@@ -304,14 +300,11 @@ function cargarWebs() {
 		return response.json();
 	})
 		.then(function (web) {
-			console.log(web);
 
 			for (let i = 0; i < web.length; i++) {
 				
 				var idWeb = web[i].idweb;
 				var name = web[i].name;
-
-				console.log(idWeb);
 
 
 				fetch('/web/' + idWeb , {
@@ -321,8 +314,6 @@ function cargarWebs() {
 				})
 					.then(function (web) {
 
-						console.log(web);
-						
 						
 						var divWeb = document.createElement("div");
 						divWeb.classList = "web";
