@@ -59,7 +59,7 @@ function closeHero() {
 	document.getElementById("sidebar").style.display = "block";
 	document.getElementById("main").style.display = "block";
 	document.getElementById("insertar").style.visibility = "visible";
-	document.getElementById("categorias").style.display = "visible";
+	document.getElementById("categorias").style.display = "block";
 
 
 
@@ -71,7 +71,7 @@ function openHero() {
 	document.getElementById("sidebar").style.display = "none";
 	document.getElementById("main").style.display = "none";
 	document.getElementById("insertar").style.visibility = "hidden";
-	document.getElementById("categorias").style.visibility = "hidden";
+	document.getElementById("categorias").style.display = "none";
 
 
 
