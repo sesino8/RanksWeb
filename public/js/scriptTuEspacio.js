@@ -11,9 +11,7 @@ var lastUser = "";
 var websFetch = new Array;
 var miCookie;
 
-// TODO tenemos que revisar codigo, 
-// hacer paginas de contactanos y categorias ocultarcuando es grande y poner cuando es pequena
-// favicon
+
 window.onload = async function () {
 
 	mybutton = document.getElementById("myBtn");
@@ -40,13 +38,6 @@ window.onload = async function () {
 		mainNav.classList.toggle('active');
 	});
 	cargarWebs();
-
-
-
-}
-
-function init() {
-
 
 }
 
@@ -97,7 +88,7 @@ async function colorEstrellaPulsada(ev, index) {
 }
 
 
-function fallasUsuario(usuario) {
+function webUsuario(usuario) {
 	fetch('/puntuaciones/' + usuario, {
 		method: "GET"
 	}).then(function (response) {
@@ -120,7 +111,7 @@ function fallasUsuario(usuario) {
 
 function puntuar(idweb, value, usuario) {
 
-	fallasUsuario(usuario);
+	webUsuario(usuario);
 
 	methodProve = "POST";
 	if (ratedIdWeb.includes(idweb)) {
@@ -243,10 +234,6 @@ function closeCookie() {
 
 }
 
-
-//Get the button:
-
-// When the user scrolls down 20px from the top of the document, show the button
 window.onscroll = function () { scrollFunction() };
 
 function scrollFunction() {
@@ -258,10 +245,10 @@ function scrollFunction() {
 	}
 }
 
-// When the user clicks on the button, scroll to the top of the document
+
 function topFunction() {
 	document.body.scrollTop = 0;
-	document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+	document.documentElement.scrollTop = 0; 
 }
 
 function createWebs() {
@@ -372,7 +359,7 @@ function cargarWebs() {
 						if (miCookie != null) {
 							document.getElementsByClassName("hero")[0].style.display = "none";
 
-							fallasUsuario(miCookie);
+							webUsuario(miCookie);
 							showRating();
 						}
 

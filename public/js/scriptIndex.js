@@ -14,9 +14,7 @@ var numerWebs;
 var selectedImage;
 var main;
 
-// TODO tenemos que revisar codigo, 
-// hacer paginas de contactanos y categorias ocultarcuando es grande y poner cuando es pequena
-// favicon
+//Onload de la pagina, se ejecuta cuando la pagina ya se ha cargado
 window.onload = async function () {
 
 	document.querySelector("#imageForm").addEventListener("change", function (e) {
@@ -40,6 +38,7 @@ window.onload = async function () {
 
 }
 
+//Funcion que tenemos para sacar cuantas webs hay dentro de la base de datos y poder darle un ID
 async function allWebsBBDD() {
 
 	fetch('/web/', {
@@ -47,22 +46,21 @@ async function allWebsBBDD() {
 	}).then(function (response) {
 		return response.json();
 	})
-		.then(function (falla) {
+		.then(function (webs) {
 
-			numerWebs = falla.length;
+			numerWebs = webs.length;
 		});
 
 }
 
+//Hero es un formulario que tenemos para login e insertar webs
+//Contemplamos que desaparezca todo menos el formulario openhero() y que vuelva a aparecer despues de cerrarlo closeHero()
 function closeHero() {
 	document.getElementsByClassName("hero")[0].style.display = "none";
 	document.getElementById("sidebar").style.display = "block";
 	document.getElementById("main").style.display = "block";
 	document.getElementById("insertar").style.visibility = "visible";
 	document.getElementById("categorias").style.visibility = "visible";
-
-
-
 
 }
 
@@ -72,19 +70,16 @@ function openHero() {
 	document.getElementById("main").style.display = "none";
 	document.getElementById("insertar").style.visibility = "hidden";
 	document.getElementById("categorias").style.visibility = "hidden";
-
-
-
-
 }
 
-
+//Expresion para leer la cookie del navegador
 function readCookie(name) {
 
 	return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + name.replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
 
 }
 
+//Funcion para la transicion en el formlario del login, una de registrarse y la otra de iniciar sesion
 function register() {
 	x.style.left = "-400px";
 	y.style.left = "50px";
@@ -103,7 +98,7 @@ function login() {
 }
 
 
-
+// Como indica la funcion, le damos colo a las estrellas de a valoracion con sun indice que es el id de la web
 async function colorEstrellaPulsada(ev, index) {
 
 	var estrellas = document.querySelectorAll(`[  data-idweb = '${ev.dataset.idweb}' ]`);
@@ -124,9 +119,8 @@ async function colorEstrellaPulsada(ev, index) {
 	puntuar(ev.dataset.idweb, ev.dataset.index, usuario);
 }
 
-
-function fallasUsuario(usuario) {
-
+//Recogemos las puntuaciones que tiene ese usuario y lo metemos en un array para saber que webs ha valorado este usuario
+function webUsuario(usuario) {
 
 	fetch('/puntuaciones/' + usuario, {
 		method: "GET"
@@ -135,7 +129,6 @@ function fallasUsuario(usuario) {
 	})
 		.then(function (webs) {
 			userRating(webs);
-
 
 			webs.forEach(web => {
 
@@ -148,6 +141,7 @@ function fallasUsuario(usuario) {
 		});
 }
 
+//Funcion para puntuar con conexion a la base de datos, tenemos dos opciones, para updatear documentos o simplemente para insertar
 async function puntuar(idweb, value, usuario) {
 
 
@@ -168,11 +162,13 @@ async function puntuar(idweb, value, usuario) {
 			
 		});
 
-		fallasUsuario(usuario);
+		webUsuario(usuario);
 	
 
 }
 
+
+//Login o register con conexiones a la base de datos para saber si la contrasena o el usuario son correctos
 function loginSubmit(formType) {
 	form = document.getElementById(formType);
 	email = form.children[0].value;
@@ -211,6 +207,7 @@ function loginSubmit(formType) {
 		})
 }
 
+// Funcion para mostrar la contrasena en caso de que la quiera ver el usuario 
 function show(formType) {
 	var passwdElement = document.getElementById(formType).children[1];
 	var showElement = document.getElementById(formType).children[2];
@@ -225,6 +222,7 @@ function show(formType) {
 
 }
 
+// Muestra las estrellas de la valoracion cuando no se esten mostrando porque no haya nadie logueado
 function showRating() {
 	valoracionesElement = document.getElementsByClassName("valoracion");
 
@@ -238,6 +236,7 @@ function showRating() {
 
 }
 
+// Cambia el color de la estrella según pulsemos en ellas, buscamos los divs de dichas webs para cambiarlo
 function userRating(userWebs) {
 
 
@@ -265,6 +264,7 @@ function userRating(userWebs) {
 
 }
 
+//Cierra sesion y elimina las cookies
 function closeSession() {
 
 	document.cookie = "nombre=" + user + "; expires = Thu, 01 Jan 1970 00:00:00 GMT";
@@ -273,6 +273,7 @@ function closeSession() {
 
 }
 
+//Quita la advertencia de que estamos usando cookies
 function closeCookie() {
 
 	document.getElementById("cookieAdv").style.display = "none";
@@ -280,10 +281,7 @@ function closeCookie() {
 
 }
 
-
-//Get the button:
-
-// When the user scrolls down 20px from the top of the document, show the button
+//Cuando el usuario va para abajo mas de 1000 pixeles aparece el boton
 window.onscroll = function () { scrollFunction() };
 
 function scrollFunction() {
@@ -295,25 +293,13 @@ function scrollFunction() {
 	}
 }
 
-// When the user clicks on the button, scroll to the top of the document
+// Cuando el usuario clicka el botón va a l principio del documento
 function topFunction() {
 	document.body.scrollTop = 0;
-	document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+	document.documentElement.scrollTop = 0;
 }
 
-/* async function toDataUrl(url, callback) {
-	var xhr = new XMLHttpRequest();
-	xhr.onload = function () {
-		var reader = new FileReader();
-		reader.onloadend = function () {
-			callback(reader.result);
-		}
-		reader.readAsDataURL(xhr.response);
-	};
-	xhr.open('GET', url);
-	xhr.responseType = 'blob';
-	xhr.send();
-} */
+//Obtiene una imagen en base64 para despues poder subirla al servidor 
 function getImage(e) {
 	const file = e.target.files[0];
 	const fileReader = new FileReader();
@@ -329,8 +315,7 @@ function getImage(e) {
 
 }
 
-
-
+//Funcion para crear webs y conectarse con la base de datos para insertarla
 async function createWeb() {
 
 	var loginChilds = document.getElementById("login").children;
@@ -359,9 +344,9 @@ async function createWeb() {
 
 		});
 
-
 }
 
+//Funcion para cargar webs en el documento HTML
 function cargarWebs(verified) {
 	var url;
 	var ponerParrafo = false;
@@ -488,9 +473,9 @@ function cargarWebs(verified) {
 
 
 				if (verified == "false") {
-					fallasUsuario(miCookie, web);
+					webUsuario(miCookie, web);
 				} else {
-					fallasUsuario(miCookie, "");
+					webUsuario(miCookie, "");
 
 				}
 
